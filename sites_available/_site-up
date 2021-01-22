@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+fqdn="$1"
+tld="${fqdn##*.}"
+temp="${fqdn%.$tld}"
+domain="${temp##*.}"
+host="${temp%.$domain}"
+[ -f "/etc/httpd/sites_available/$tld.$domain.$host.vhost.ssl.conf" ] || \
+    [ -f "/etc/httpd/sites_available/$tld.$domain.$host.vhost.conf" ] || \
+    /etc/httpd/sites_available/_site-add "$fqdn"
+ln -s \
+    /etc/httpd/sites_available/$tld.$domain.$host.vhost.* \
+    "/etc/httpd/sites_enabled/"
+systemctl restart httpd
+
+# vim: syntax=sh ts=4 sw=4 sts=4 et sr

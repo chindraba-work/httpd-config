@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+fqdn="$1"
+tld="${fqdn##*.}"
+temp="${fqdn%.$tld}"
+domain="${temp##*.}"
+host="${temp%.$domain}"
+
+rm -rf "/etc/httpd/sites_enabled/$tld.$domain.$host.vhost.*"
+systemctl restart httpd
+
+# vim: syntax=sh ts=4 sw=4 sts=4 et sr

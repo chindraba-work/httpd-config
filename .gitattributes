@@ -1,2 +1,3 @@
 *.conf linguist-language=ApacheConf
+*.conf -linguist-vendored
 

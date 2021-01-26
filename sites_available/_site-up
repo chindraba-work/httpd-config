@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: Apache-2.0
+
+# Copyright © 2021 Chindraba (Ronald Lamoreaux)
+#                 <httpd-config@chindraba.work>
 
 fqdn="$1"
 tld="${fqdn##*.}"
